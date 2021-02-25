@@ -62,6 +62,7 @@ class Rail extends Edge {
         this._line = line;
     }
 }
+
 class Multigraph extends Graph {
     constructor() {
         super();
@@ -74,20 +75,35 @@ class Multigraph extends Graph {
     public findRoute(src: number, dest: number): Station[] {
         let agenda: number[] = [src];
         let parents: Map<number, number> = new Map();
+        let expansions: number = 0;
 
         while (agenda != []) {
             let current = agenda.pop();
-
             if (current == dest) {
-                return this.reconstructPath(current);
+                return this.reconstructPath(current, parents).map(s => this._vertices.get(s));
+            }
+
+            if (expansions++ < 50000) {
+                let adjacent = this.adjacentStations(current);
+                for (let a of adjacent) {
+                    if (!parents.has(a) && a != src) {
+                        agenda.push(a);
+                        parents.set(a, current);
+                    }
+                }
             }
         }
 
         return [];
     }
 
-    private reconstructPath(current, parents): number[] {
-        return []
+    private reconstructPath(current: number, parents: Map<number, number>): number[] {
+        let path = [current];
+        while (parents.has(current)) {
+            current = parents.get(current);
+            path = [current, ...path];
+        }
+        return path;
     }
 
     private adjacentStations(id: number): number[] {
