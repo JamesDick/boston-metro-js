@@ -1,8 +1,10 @@
+
 class Vertex {
     constructor(id, name) {
         this._id = id;
         this._name = name;
     }
+
     get id() { return this._id; }
     set id(id) { this._id = id; }
 
@@ -15,6 +17,7 @@ class Edge {
         this._src = src;
         this._dest = dest;
     }
+
     get src() { return this._src; }
     set src(src) { this._src = src; }
 
@@ -48,6 +51,7 @@ class Rail extends Edge {
         super(src, dest);
         this._line = line;
     }
+
     get line() { return this._line; }
     set line(line) { this._line = line; }
 }
@@ -66,20 +70,23 @@ class Multigraph extends Graph {
     }
 
     findRoute(src, dest) {
-        let agenda = [src];
-        let parents = new Map();
-        let expansions = 0;
+        let agenda = [src],
+            parents = new Map(),
+            expansions = 0;
+
         while (agenda != []) {
-            let current = agenda.pop();
+
+            let current = agenda.pop()
             if (current == dest) {
                 let path = this.reconstructPath(current, parents);
                 return path.map(s => this._vertices[s]);
             }
+
             if (expansions++ < 150) {
                 let adjacent = this.adjacentStations(current);
                 for (let a of adjacent) {
                     if (!parents.has(a) && a != src) {
-                        agenda.push(a);
+                        agenda = [a, ...agenda];
                         parents.set(a, current);
                     }
                 }
