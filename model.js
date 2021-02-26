@@ -71,9 +71,7 @@ class Multigraph extends Graph {
         let expansions = 0;
         while (agenda != []) {
             let current = agenda.pop();
-            console.log('Checking station ', current);
             if (current == dest) {
-                console.log('Destination found:', dest);
                 let path = this.reconstructPath(current, parents);
                 return path.map(s => this._vertices[s]);
             }
@@ -87,12 +85,10 @@ class Multigraph extends Graph {
                 }
             }
         }
-        console.log('Could not find route...')
         return [];
     }
 
     reconstructPath(current, parents) {
-        console.log('Reconstructing path to', current);
         let path = [current];
         while (parents.has(current)) {
             current = parents.get(current);

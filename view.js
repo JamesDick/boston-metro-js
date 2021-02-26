@@ -13,6 +13,7 @@ class View {
     }
 
     displayRoute(stations) {
+        $('#routeDiv').css('display', 'block');
         $('#routeLst').empty();
         for (let station of stations) {
             $('#routeLst').append($('<li/>').text(station.name).addClass("list-group-item"));
