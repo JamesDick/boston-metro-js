@@ -40,11 +40,15 @@ abstract class Graph {
     }
 
     public addVertex(vertex: Vertex): void {
-        this._vertices[vertex.id] = vertex;
+        if (!this._vertices.has(vertex.id)) {
+            this._vertices[vertex.id] = vertex;
+        }
     }
 
     public addEdge(edge: Edge): void {
-        this._edges.push(edge);
+        if (this._vertices.has(edge.src) && this._vertices.has(edge.dest)) {
+            this._edges.push(edge);
+        }
     }
 }
 
@@ -61,6 +65,9 @@ class Rail extends Edge {
         super(src, dest);
         this._line = line;
     }
+
+    public get line() { return this._line; }
+    public set line(line: string) { this._line = line; }
 }
 
 class Multigraph extends Graph {
@@ -109,11 +116,9 @@ class Multigraph extends Graph {
     private adjacentStations(id: number): number[] {
         let adjacentStations: number[] = [];
 
-        for (let e of this._edges) {
-            if (e.src == id) {
-                adjacentStations.push(e.dest);
-            }
-        }
+        this._edges
+            .filter(e => e.src == id)
+            .forEach(e => adjacentStations.push(e.dest))
 
         return adjacentStations;
     }
