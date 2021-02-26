@@ -1,39 +1,47 @@
 class View {
     constructor(stations) {
-        console.log(JSON.stringify(stations));
-
-        this._srcLst = $('#srcLst');
-        this._destLst = $('#destLst');
-        this._routeLst = $('#routeLst');
-        this._findRouteBtn = $('#findRouteBtn');
-
-        for (let station of stations) {
-            let option = $('<option/>', { value : station.id }).text(station.name);
-            this._srcLst.append(option);
-            this._destLst.append(option.clone());
-        }
+        this.setSrcDestOptions(stations);
+        this.setHelpBtnHandler();
     }
 
     selectedSrcId() {
-        return this._srcLst.val();
+        return $('#srcLst').val();
     }
 
     selectedDestId() {
-        return this._destLst.val();
+        return $('#destLst').val();
     }
 
     displayRoute(stations) {
-        this.clearRoute();
+        $('#routeLst').empty();
         for (let station of stations) {
-            this._routeLst.append(`<li>${station.name}</li>`);
+            $('#routeLst').append($('<li/>').text(station.name));
         }
     }
 
-    clearRoute() {
-        this._routeLst.empty();
+    setSrcDestOptions(stations) {
+        for (let station of stations) {
+            let option = $('<option/>', { value : station.id }).text(station.name);
+            $('#srcLst').append(option);
+            $('#destLst').append(option.clone());
+        }
     }
 
     setFindRouteBtnHandler(handler) {
-        this._findRouteBtn.on('click', handler);
+        $('#findRouteBtn').on('click', handler);
+    }
+
+    setHelpBtnHandler() {
+        function showHelp() {
+            $('#helpDiv').css('display', 'block');
+            $('#helpBtn').on('click', hideHelp);
+        }
+
+        function hideHelp() {
+            $('#helpDiv').css('display', 'none');
+            $('#helpBtn').on('click', showHelp);
+        }
+
+        $('#helpBtn').on('click', showHelp);
     }
 }
