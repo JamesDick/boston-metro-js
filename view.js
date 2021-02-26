@@ -15,15 +15,14 @@ class View {
     displayRoute(stations) {
         $('#routeLst').empty();
         for (let station of stations) {
-            $('#routeLst').append($('<li/>').text(station.name));
+            $('#routeLst').append($('<li/>').text(station.name).addClass("list-group-item"));
         }
     }
 
     setSrcDestOptions(stations) {
         for (let station of stations) {
-            let option = $('<option/>', { value : station.id }).text(station.name);
-            $('#srcLst').append(option);
-            $('#destLst').append(option.clone());
+            $('#srcLst').append($('<option/>', { value : station.id }).text(station.name));
+            $('#destLst').append($('<option/>', { value : station.id }).text(station.name));
         }
     }
 

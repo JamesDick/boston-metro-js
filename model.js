@@ -77,7 +77,7 @@ class Multigraph extends Graph {
                 let path = this.reconstructPath(current, parents);
                 return path.map(s => this._vertices[s]);
             }
-            if (expansions++ < 1000) {
+            if (expansions++ < 150) {
                 let adjacent = this.adjacentStations(current);
                 for (let a of adjacent) {
                     if (!parents.has(a) && a != src) {
@@ -105,11 +105,7 @@ class Multigraph extends Graph {
         let adjacentStations = [];
         this._edges
             .filter(e => e.src == id)
-            .forEach(e => {
-                if (e.dest != 0) {
-                    adjacentStations.push(e.dest)
-                }
-            });
+            .forEach(e => { if (e.dest != 0) { adjacentStations.push(e.dest) }});
         return adjacentStations;
     }
 }
@@ -125,7 +121,7 @@ class Model {
         let stations = [
             {
                 "id": "1",
-                "name": "OakGrove"
+                "name": "Oak Grove"
             }, {
                 "id": "2",
                 "name": "Malden"
@@ -134,7 +130,7 @@ class Model {
                 "name": "Wonderland"
             }, {
                 "id": "4",
-                "name": "RevereBeach"
+                "name": "Revere Beach"
             }, {
                 "id": "5",
                 "name": "Wellington"
@@ -149,25 +145,25 @@ class Model {
                 "name": "Alewife"
             }, {
                 "id": "9",
-                "name": "SuffolkDowns"
+                "name": "Suffolk Downs"
             }, {
                 "id": "10",
                 "name": "Porter"
             }, {
                 "id": "11",
-                "name": "OrientHeights"
+                "name": "Orient Heights"
             }, {
                 "id": "12",
-                "name": "SullivanSquare"
+                "name": "Sullivan Square"
             }, {
                 "id": "13",
-                "name": "WoodIsland"
+                "name": "Wood Island"
             }, {
                 "id": "14",
                 "name": "Harvard"
             }, {
                 "id": "15",
-                "name": "CommunityCollege"
+                "name": "Community College"
             }, {
                 "id": "16",
                 "name": "Airport"
@@ -179,10 +175,10 @@ class Model {
                 "name": "Maverick"
             }, {
                 "id": "19",
-                "name": "SciencePark"
+                "name": "Science Park"
             }, {
                 "id": "20",
-                "name": "NorthStation"
+                "name": "North Station"
             }, {
                 "id": "21",
                 "name": "Central"
@@ -203,16 +199,16 @@ class Model {
                 "name": "Aquarium"
             }, {
                 "id": "27",
-                "name": "GovernmentCenter"
+                "name": "Government Center"
             }, {
                 "id": "28",
                 "name": "State"
             }, {
                 "id": "29",
-                "name": "ParkStreet"
+                "name": "Park Street"
             }, {
                 "id": "30",
-                "name": "DowntownCrossing"
+                "name": "Downtown Crossing"
             }, {
                 "id": "31",
                 "name": "Boylston"
@@ -221,160 +217,160 @@ class Model {
                 "name": "Chinatown"
             }, {
                 "id": "33",
-                "name": "SouthStation"
+                "name": "South Station"
             }, {
                 "id": "34",
                 "name": "Arlington"
             }, {
                 "id": "35",
-                "name": "BabcockStreet"
+                "name": "Babcock Street"
             }, {
                 "id": "36",
-                "name": "BrightonAvenue"
+                "name": "Brighton Avenue"
             }, {
                 "id": "37",
-                "name": "PleasantStreet"
+                "name": "Pleasant Street"
             }, {
                 "id": "38",
-                "name": "St.PaulStreet"
+                "name": "St. Paul Street"
             }, {
                 "id": "39",
-                "name": "BostonUniversityWest"
+                "name": "Boston University West"
             }, {
                 "id": "40",
-                "name": "FordhamRoad"
+                "name": "Fordham Road"
             }, {
                 "id": "41",
                 "name": "Copley"
             }, {
                 "id": "42",
-                "name": "HarvardAvenue"
+                "name": "Harvard Avenue"
             }, {
                 "id": "43",
-                "name": "BostonUniversityCentral"
+                "name": "Boston University Central"
             }, {
                 "id": "44",
-                "name": "NewEnglandMedicalCenter"
+                "name": "New England Medical Center"
             }, {
                 "id": "45",
-                "name": "BostonUniversityEast"
+                "name": "Boston University East"
             }, {
                 "id": "46",
-                "name": "BlandfordStreet"
+                "name": "Blandford Street"
             }, {
                 "id": "47",
                 "name": "Kenmore"
             }, {
                 "id": "48",
-                "name": "GriggsStreet/LongwoodAvenue"
+                "name": "Griggs Street / Longwood Avenue"
             }, {
                 "id": "49",
-                "name": "WarrenStreet"
+                "name": "Warren Street"
             }, {
                 "id": "50",
-                "name": "AllstonStreet"
+                "name": "Allston Street"
             }, {
                 "id": "51",
-                "name": "Hynes/ICA"
+                "name": "Hynes / ICA"
             }, {
                 "id": "52",
-                "name": "BackBay/SouthEnd"
+                "name": "Back Bay / South End"
             }, {
                 "id": "53",
                 "name": "Prudential"
             }, {
                 "id": "54",
-                "name": "St.Mary'sStreet"
+                "name": "St. Mary's Street"
             }, {
                 "id": "55",
-                "name": "SummitAvenue"
+                "name": "Summit Avenue"
             }, {
                 "id": "56",
-                "name": "HawesStreet"
+                "name": "Hawes Street"
             }, {
                 "id": "57",
                 "name": "Fenway"
             }, {
                 "id": "58",
-                "name": "KentStreet"
+                "name": "Kent Street"
             }, {
                 "id": "59",
-                "name": "WashingtonStreet"
+                "name": "Washington Street"
             }, {
                 "id": "60",
                 "name": "Broadway"
             }, {
                 "id": "61",
-                "name": "St.PaulStreet"
+                "name": "St. Paul Street"
             }, {
                 "id": "62",
                 "name": "Symphony"
             }, {
                 "id": "63",
-                "name": "CoolidgeCorner"
+                "name": "Coolidge Corner"
             }, {
                 "id": "64",
-                "name": "MassachusettsAvenue"
+                "name": "Massachusetts Avenue"
             }, {
                 "id": "65",
                 "name": "Longwood"
             }, {
                 "id": "66",
-                "name": "MountHoodRoad"
+                "name": "Mount Hood Road"
             }, {
                 "id": "67",
-                "name": "SutherlandRoad"
+                "name": "Sutherland Road"
             }, {
                 "id": "68",
-                "name": "WinchesterStreet/SummitAv."
+                "name": "Winchester Street / Summit Av."
             }, {
                 "id": "69",
-                "name": "BostonCollege"
+                "name": "Boston College"
             }, {
                 "id": "70",
-                "name": "NortheasternUniversity"
+                "name": "Northeastern University"
             }, {
                 "id": "71",
-                "name": "ChiswickRoad"
+                "name": "Chiswick Road"
             }, {
                 "id": "72",
-                "name": "GreycliffRoad"
+                "name": "Greycliff Road"
             }, {
                 "id": "73",
-                "name": "BrandonHall"
+                "name": "Brandon Hall"
             }, {
                 "id": "74",
-                "name": "FairbanksStreet"
+                "name": "Fairbanks Street"
             }, {
                 "id": "75",
-                "name": "SouthStreet"
+                "name": "South Street"
             }, {
                 "id": "76",
-                "name": "WashingtonSquare"
+                "name": "Washington Square"
             }, {
                 "id": "77",
-                "name": "TappanStreet"
+                "name": "Tappan Street"
             }, {
                 "id": "78",
-                "name": "ChestnutHillAvenue"
+                "name": "Chestnut Hill Avenue"
             }, {
                 "id": "79",
-                "name": "MuseumofFineArts"
+                "name": "Museum of Fine Arts"
             }, {
                 "id": "80",
-                "name": "DeanRoad"
+                "name": "Dean Road"
             }, {
                 "id": "81",
-                "name": "EnglewoodAvenue"
+                "name": "Englewood Avenue"
             }, {
                 "id": "82",
                 "name": "Ruggles"
             }, {
                 "id": "83",
-                "name": "ClevelandCircle"
+                "name": "Cleveland Circle"
             }, {
                 "id": "84",
-                "name": "LongwoodMedicalArea"
+                "name": "Longwood Medical Area"
             }, {
                 "id": "85",
                 "name": "Beaconsfield"
@@ -383,91 +379,90 @@ class Model {
                 "name": "Reservoir"
             }, {
                 "id": "87",
-                "name": "BrighamCircle"
+                "name": "Brigham Circle"
             }, {
                 "id": "88",
-                "name": "FenwoodRoad"
+                "name": "Fenwood Road"
             }, {
                 "id": "89",
-                "name": "MissionPark"
+                "name": "Mission Park"
             }, {
                 "id": "90",
-                "name": "BrooklineVillage"
+                "name": "Brookline Village"
             }, {
                 "id": "91",
-                "name": "BrooklineHills"
+                "name": "Brookline Hills"
             }, {
                 "id": "92",
                 "name": "Riverway"
             }, {
                 "id": "93",
-                "name": "RoxburyCrossing"
+                "name": "Roxbury Crossing"
             }, {
                 "id": "94",
                 "name": "Andrew"
             }, {
                 "id": "95",
-                "name": "BackOfTheHill"
+                "name": "Back Of The Hill"
             }, {
                 "id": "96",
-                "name": "HeathStreet"
+                "name": "Heath Street"
             }, {
                 "id": "97",
-                "name": "JacksonSquare"
+                "name": "Jackson Square"
             }, {
                 "id": "98",
-                "name": "JFK/UMass"
+                "name": "JFK / UMass"
             }, {
                 "id": "99",
-                "name": "StonyBrook"
+                "name": "Stony Brook"
             }, {
                 "id": "100",
-                "name": "SavinHill"
+                "name": "Savin Hill"
             }, {
                 "id": "101",
-                "name": "GreenStreet"
+                "name": "Green Street"
             }, {
                 "id": "102",
-                "name": "ForestHills"
+                "name": "Forest Hills"
             }, {
                 "id": "103",
-                "name": "FieldsCorner"
-            }, {
-                "id": "104",
+                "name": "Fields Corner"
+            }, { 
                 "name": "Shawmut"
             }, {
                 "id": "105",
                 "name": "Ashmont"
             }, {
                 "id": "106",
-                "name": "CedarGrove"
+                "name": "Cedar Grove"
             }, {
                 "id": "107",
-                "name": "ButlerStreet"
+                "name": "Butler Street"
             }, {
                 "id": "108",
                 "name": "Milton"
             }, {
                 "id": "109",
-                "name": "CentralAvenue"
+                "name": "Central Avenue"
             }, {
                 "id": "110",
-                "name": "ValleyRoad"
+                "name": "Valley Road"
             }, {
                 "id": "111",
-                "name": "CapenStreet"
+                "name": "Capen Street"
             }, {
                 "id": "112",
                 "name": "Mattapan"
             }, {
                 "id": "113",
-                "name": "ChesnutHill"
+                "name": "Chesnut Hill"
             }, {
                 "id": "114",
-                "name": "NewtonCenter"
+                "name": "Newton Center"
             }, {
                 "id": "115",
-                "name": "NewtonHighlands"
+                "name": "Newton Highlands"
             }, {
                 "id": "116",
                 "name": "Eliot"
@@ -482,16 +477,16 @@ class Model {
                 "name": "Riverside"
             }, {
                 "id": "120",
-                "name": "NorthQuincy"
+                "name": "North Quincy"
             }, {
                 "id": "121",
                 "name": "Wollaston"
             }, {
                 "id": "122",
-                "name": "QuincyCenter"
+                "name": "Quincy Center"
             }, {
                 "id": "123",
-                "name": "QuincyAdams"
+                "name": "Quincy Adams"
             }, {
                 "id": "124",
                 "name": "Braintree"
@@ -1607,7 +1602,6 @@ class Model {
     }
 
     getStations() {
-        let stations = this._multigraph.getStations();
-        return stations
+        return this._multigraph.getStations();
     }
 }
