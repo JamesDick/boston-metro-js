@@ -17,10 +17,12 @@
 
     <!-- Bootswatch Darkly -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/darkly/bootstrap.min.css">
+
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="container"><br>
+    <div class="container"><br><br>
 
         <div class="row d-flex align-items-center">
 
@@ -64,19 +66,19 @@
 
             <!-- Source Select -->
             <div class="col col-5">
-                <label for="srcLst">Source</label>
-                <select name="srcLst" id="srcLst" class="custom-select"></select>
+                <label for="srcLst"><h3>Source</h5></label>
+                <select name="srcLst" id="srcLst" class="selector"></select>
             </div>
 
             <!-- Destination Select -->
             <div class="col col-5">
-                <label for="destLst">Destination</label>
-                <select name="destLst" id="destLst" class="custom-select"></select>
+                <label for="destLst"><h3>Destination</h4></label>
+                <select name="destLst" id="destLst" class="selector"></select>
             </div>
 
             <!-- Find Route Button -->
             <div class="col col-2 d-flex justify-content-end">
-                <button class="btn btn-success" id="findRouteBtn">Find Route</button>
+                <button class="btn btn-lg btn-success" id="findRouteBtn">Find Route</button>
             </div>
 
         </div><br><br>
@@ -87,7 +89,7 @@
 
             <div class="col card">
                 <div class="card-body">
-                    <h4 class="card-title">Route</h3>
+                    <h3 class="card-title">Route</h3>
                     <ul id="routeLst" class="list-group list-group-flush"></ul>
                 </div>
             </div>
