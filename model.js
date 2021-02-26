@@ -3,70 +3,60 @@ class Vertex {
         this._id = id;
         this._name = name;
     }
-    get id() {
-        return this._id;
-    }
-    set id(id) {
-        this._id = id;
-    }
-    get name() {
-        return this._name;
-    }
-    set name(name) {
-        this._name = name;
-    }
+    get id() { return this._id; }
+    set id(id) { this._id = id; }
+
+    get name() { return this._name; }
+    set name(name) { this._name = name; }
 }
+
 class Edge {
     constructor(src, dest) {
         this._src = src;
         this._dest = dest;
     }
-    get src() {
-        return this._src;
-    }
-    set src(src) {
-        this._src = src;
-    }
-    get dest() {
-        return this._dest;
-    }
-    set dest(dest) {
-        this._dest = dest;
-    }
+    get src() { return this._src; }
+    set src(src) { this._src = src; }
+
+    get dest() { return this._dest; }
+    set dest(dest) { this._dest = dest; }
 }
+
 class Graph {
     constructor() {
         this._vertices = new Map();
         this._edges = [];
     }
+
     addVertex(vertex) {
         this._vertices[vertex.id] = vertex;
     }
+
     addEdge(edge) {
         this._edges.push(edge);
     }
 }
+
 class Station extends Vertex {
     constructor(id, name) {
         super(id, name);
     }
 }
+
 class Rail extends Edge {
     constructor(src, dest, line) {
         super(src, dest);
         this._line = line;
     }
-    get line() {
-        return this._line;
-    }
-    set line(line) {
-        this._line = line;
-    }
+    get line() { return this._line; }
+    set line(line) { this._line = line; }
 }
+
 class Multigraph extends Graph {
     constructor() {
         super();
     }
+
     getStations() {
         let stations = [];
         for (let id in this._vertices) {
@@ -74,6 +64,7 @@ class Multigraph extends Graph {
         }
         return stations;
     }
+
     findRoute(src, dest) {
         let agenda = [src];
         let parents = new Map();
@@ -99,6 +90,7 @@ class Multigraph extends Graph {
         console.log('Could not find route...')
         return [];
     }
+
     reconstructPath(current, parents) {
         console.log('Reconstructing path to', current);
         let path = [current];
@@ -108,6 +100,7 @@ class Multigraph extends Graph {
         }
         return path;
     }
+
     adjacentStations(id) {
         let adjacentStations = [];
         this._edges
@@ -120,10 +113,12 @@ class Multigraph extends Graph {
         return adjacentStations;
     }
 }
+
 class Model {
     constructor() {
         this._multigraph = this.generateGraph();
     }
+
     generateGraph() {
         let multigraph = new Multigraph();
 
@@ -1606,9 +1601,11 @@ class Model {
 
         return multigraph;
     }
+
     findRoute(src, dest) {
         return this._multigraph.findRoute(src, dest);
     }
+
     getStations() {
         let stations = this._multigraph.getStations();
         return stations
