@@ -2,45 +2,38 @@ class View {
     constructor(stations) {
         console.log(JSON.stringify(stations));
 
-        this._srcLst = document.getElementById('srcLst');
-        this._destLst = document.getElementById('destLst');
-        this._routeLst = document.getElementById('routeLst');
-        this._findRouteBtn = document.getElementById('findRouteBtn');
+        this._srcLst = $('#srcLst');
+        this._destLst = $('#destLst');
+        this._routeLst = $('#routeLst');
+        this._findRouteBtn = $('#findRouteBtn');
 
         for (let station of stations) {
-            let option = document.createElement('option');
-            option.value = station.id;
-            option.text = station.name;
-            this._srcLst.add(option);
-            this._destLst.add(option.cloneNode(true));
+            let option = $('<option/>', { value : station.id }).text(station.name);
+            this._srcLst.append(option);
+            this._destLst.append(option.clone());
         }
     }
 
     selectedSrcId() {
-        return this._srcLst.value;
+        return this._srcLst.val();
     }
 
     selectedDestId() {
-        return this._destLst.value;
+        return this._destLst.val();
     }
 
     displayRoute(stations) {
         this.clearRoute();
         for (let station of stations) {
-            let option = document.createElement('option');
-            option.value = station.id;
-            option.text = station.name;
-            this._routeLst.add(option);
+            this._routeLst.append(`<li>${station.name}</li>`);
         }
     }
 
     clearRoute() {
-        for (let i = this._routeLst.options.length - 1; i >= 0; i--) {
-            this._routeLst.remove(i);
-        }
+        this._routeLst.empty();
     }
 
     setFindRouteBtnHandler(handler) {
-        this._findRouteBtn.onclick = handler;
+        this._findRouteBtn.on('click', handler);
     }
 }
