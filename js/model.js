@@ -133,7 +133,11 @@ class Metro extends Graph {
      * @returns A list of all Stations in the Metro.
      */
     getStations() {
-        return this._vertices.keys().map(id => this._vertices[id]);
+        let stations = [];
+        for (let id in this._vertices) {
+            stations.push(this._vertices[id]);
+        }
+        return stations;
     }
 
     /**
@@ -190,8 +194,8 @@ class Metro extends Graph {
      * @returns A list of IDs for Stations adjacent to the specified Station.
      */
     _adjacentStations(id) {
-        return this._edges.filter(e => e.src == id && e.dest != 0)
-                          .map(e => e.dest)
+        return this._arcs.filter(e => e.src == id && e.dest != 0)
+                         .map(e => e.dest)
     }
 }
 
@@ -1686,8 +1690,8 @@ class Model {
                 "dest": "123"
         }];
 
-        stations.forEach(s => multigraph.addVertex(new Station(s.id, s.name)));
-        rails.forEach(r => multigraph.addEdge(new Rail(r.src, r.dest, r.line)));
+        stations.forEach(s => metro.addVertex(new Station(s.id, s.name)));
+        rails.forEach(r => metro.addArc(new Rail(r.src, r.dest, r.line)));
 
         return metro;
     }
@@ -1697,7 +1701,7 @@ class Model {
      * @returns A list of all Stations in the Metro.
      */
     getStations() {
-        return this._multigraph.getStations();
+        return this._metro.getStations();
     }
 
     /**
@@ -1707,6 +1711,6 @@ class Model {
      * @returns A list of Stations comprising the route between the src and dest Stations.
      */
     findRoute(src, dest) {
-        return this._multigraph.findRoute(src, dest);
+        return this._metro.findRoute(src, dest);
     }
 }
