@@ -78,12 +78,12 @@ class View {
      * The button should toggle the display of the Help Div.
      */
     _setHelpBtnHandler() {
-        function showHelp() {
+        const showHelp = () => {
             this._helpDiv.css('display', 'block');
             this._helpBtn.on('click', hideHelp);
         }
 
-        function hideHelp() {
+        const hideHelp = () => {
             this._helpDiv.css('display', 'none');
             this._helpBtn.on('click', showHelp);
         }
