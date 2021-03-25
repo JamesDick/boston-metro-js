@@ -8,7 +8,7 @@ class View {
      * Creates a new View instance and initialises the elements in the GUI.
      * @param {Station[]} stations The list of Stations which are able to be selected in the GUI.
      */
-    constructor(stations) {
+    constructor() {
         this._srcLst = $('#src-lst');
         this._destLst = $('#dest-lst');
 
@@ -19,7 +19,6 @@ class View {
         this._helpDiv = $('#help-div');
         this._helpBtn = $('#help-btn');
 
-        this._setSrcDestOptions(stations);
         this._setHelpBtnHandler();
     }
 
@@ -66,7 +65,7 @@ class View {
      * Populates the Source and Destination selects with each of the given Stations.
      * @param {Station[]} stations The list of Stations to be used.
      */
-    _setSrcDestOptions(stations) {
+    setSrcDestOptions(stations) {
         for (let station of stations) {
             this._srcLst.append($('<option/>', { value : station.id }).text(station.name));
             this._destLst.append($('<option/>', { value : station.id }).text(station.name));
