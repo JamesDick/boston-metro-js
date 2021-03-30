@@ -204,17 +204,10 @@ class Metro extends Graph {
  */
 class Model {
     /**
-     * Creates a new Model instance.
-     */
-    constructor() {
-        this._populateMetro();
-    }
-
-    /**
      * Creates a Metro instance and populates it with Stations and Rails.
      * @returns A populated Metro instance.
      */
-    async _populateMetro() {
+    async populateMetro() {
         if (this._metro) {
             return;
         }
@@ -231,9 +224,8 @@ class Model {
      * Gets a list of all Stations in the Metro.
      * @returns A list of all Stations in the Metro.
      */
-    async getStations(callback) {
-        await this._populateMetro();
-        callback(this._metro.getStations());
+    getStations() {
+        return this._metro.getStations();
     }
 
     /**

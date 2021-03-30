@@ -1,12 +1,12 @@
 'use strict';
 
-$(() => {
+$(async () => {
     let model = new Model();
     let view = new View();
 
-    model.getStations(stations => {
-        view.setSrcDestOptions(stations);
-    });
+    await model.populateMetro();
+
+    view.setSrcDestOptions(model.getStations());
     
     view.setFindRouteBtnHandler(() => {
         let src = view.selectedSrcId(),
