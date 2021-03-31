@@ -1,5 +1,5 @@
 # Boston Metro Navigation
-Simple web app for finding routes between two stations in the Boston Metro System.
+Web app for finding routes between two stations in the Boston Metro System.
 
 ## Usage
 The app can be used by visiting the site where it's hosted, [here](https://devweb2020.cis.strath.ac.uk/~qsb19184/boston-metro-asdfghjkl/).
